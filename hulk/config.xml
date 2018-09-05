@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="br.com.meapleapp" version="1.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Meaple</name>
+    <description>
+        Meaple APP
+    </description>
+    <author email="leo.galetti@gmail.com" href="http://lgmsolucoesdigitais.com.br">
+        Leonardo Galetti de Mello
+    </author>
+    <content src="index.html" />
+    <plugin name="cordova-plugin-whitelist" spec="1" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+        <preference name="android-minSdkVersion" value="21" />
+        <config-file parent="/resources" target="./res/values/strings.xml">
+            <string name="fb_app_id">854776954717712</string>
+            <string name="fb_app_name">meapleapp</string>
+        </config-file>
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+    <plugin name="cordova-plugin-statusbar" spec="^2.4.2" />
+    <plugin name="cordova-plugin-facebook4" spec="^2.2.0">
+        <variable name="APP_ID" value="854776954717712" />
+        <variable name="APP_NAME" value="meapleapp" />
+        <variable name="ANDROID_SDK_VERSION" value="4.+" />
+    </plugin>
+    <plugin name="cordova-plugin-dialogs" spec="^2.0.1" />
+    <plugin name="cordova-plugin-device" spec="^2.0.2" />
+    <plugin name="cordova-plugin-googleplus" spec="^5.3.0">
+        <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.366330369461-lrfq9hpsfk0hots2k70hnabji0e9nngl" />
+    </plugin>
+    <plugin name="cordova-plugin-spinner" spec="^1.1.0" />
+    <engine name="android" spec="^7.0.0" />
+</widget>

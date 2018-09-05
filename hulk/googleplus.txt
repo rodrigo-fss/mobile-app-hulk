@@ -1,0 +1,9 @@
+366330369461-vj9londige6oh0pudptdblm69olibd7s.apps.googleusercontent.com
+
+com.googleusercontent.apps.366330369461-t6p8h3nj3238tfuq03k96acko1hukdb7
+
+366330369461-lrfq9hpsfk0hots2k70hnabji0e9nngl.apps.googleusercontent.com
+
+com.googleusercontent.apps.366330369461-lrfq9hpsfk0hots2k70hnabji0e9nngl
+
+cordova plugin add cordova-plugin-googleplus --save --variable REVERSED_CLIENT_ID=com.googleusercontent.apps.366330369461-vj9londige6oh0pudptdblm69olibd7s
