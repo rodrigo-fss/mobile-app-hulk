@@ -15,11 +15,33 @@ class Usuario{
         $this->conn = $db;
     }
 
-    function sing_up(){
-        //echo $this->id;
-        echo $this->nome;
-        echo $this->email;
-        return true;
+    function sing_up($nome, $email){
+        if($nome && $email){
+            $query = "INSERT INTO " . $this->table_name . "(nome, email) VALUES ('" . $nome ."','". $email .  "')";
+            // prepare query statement
+            $stmt = $this->conn->prepare($query);
+            // execute query
+            $stmt->execute();
+
+            //GET ID/VERIFICA SE FEZ A ISNERÇÃO CORRETAMENTE
+            $query = "SELECT ID FROM " . $this->table_name . " WHERE email ='" . $email . "'";
+            // prepare query statement
+            $stmt = $this->conn->prepare($query);
+            // execute query
+            $stmt->execute();
+            $id = $stmt->fetch(PDO::FETCH_ASSOC)["ID"];
+
+            if($id){
+                include_once 'auth.php';
+                $auth = new Auth($this->conn);
+                $auth->create_token($id);
+
+                return $id;
+            }
+            else return false;
+             
+            //else return false;
+        }
     }
     
     function read_all(){
@@ -47,22 +69,5 @@ class Usuario{
         return $stmt;
     }
 
-    function val_token($token, $id){
-        $query = "SELECT token FROM token WHERE IDUsuario = " . $id;
-
-        // prepare query statement
-        $stmt = $this->conn->prepare($query);
-     
-        // execute query
-        $db_token = $stmt->execute();
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if(strcmp($row['token'], $token) == 0){
-            return true;
-        }
-        else{
-            return false;  
-        } 
-    }
 
 }

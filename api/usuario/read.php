@@ -6,6 +6,7 @@ header("Content-Type: application/json; charset=UTF-8");
 // include database and object files
 include_once '../config/database.php';
 include_once '../objects/usuario.php';
+include_once '../objects/auth.php';
 
 //get current url
 $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -21,9 +22,10 @@ $db = $database->getConnection();
  
 // initialize object
 $usuario = new Usuario($db);
+$auth = new Auth($db);
  
  //verificando token
-$val_token = $usuario->val_token($token, $id);
+$val_token = $auth->val_token($token, $id);
 
 if($val_token){
 

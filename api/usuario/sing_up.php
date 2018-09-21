@@ -11,11 +11,7 @@ include_once '../objects/usuario.php';
 $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 //parse url
 $url_params = parse_url($url);
-parse_str($url_params['query'], $param);
-
-//get token
-$token = $param['token'];
-$id = explode(")", $token)[0];
+parse_str($url_params['query'], $params);
 
 // instantiate database and product object
 $database = new Database();
@@ -23,14 +19,15 @@ $db = $database->getConnection();
 
 // initialize object
 $usuario = new Usuario($db);
-$usuario->name = $param['name'];
-$usuario->email = params['email'];
 
+$cadastro = $usuario->sing_up(urldecode($params["name"]), urldecode($params['email']));
  //verificando token
-if($usuario->sing_up() == true){
-    echo json_encode(
-        array("message" => "Usuario cadastrado com sucesso.")
+if($cadastro){
+    $msg = array(
+        "message" => "Usuario cadastrado com sucesso.",
+        "ID" => $cadastro,
     );
+    echo json_encode($msg);
 } 
 else{
     echo json_encode(
