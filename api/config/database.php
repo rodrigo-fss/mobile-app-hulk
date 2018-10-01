@@ -5,10 +5,10 @@ class Database{
     // specify your own database credentials
     private $host = "localhost";
     private $db_name = "formo539_mobile";
-    private $username = "root";
-    private $password = "";
-    //private $username = "formo539_mobile";
-    //private $password = "socialbeer";
+    //private $username = "root";
+    //private $password = "";
+    private $username = "formo539_mobile";
+    private $password = "socialbeer";
     public $conn;
  
     // get the database connection

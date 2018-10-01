@@ -117,5 +117,24 @@ CREATE TABLE token(
 				ON UPDATE NO ACTION
 );
 
-INSERT INTO usuario(id, nome, email) VALUES (1, "Rodrigo Faria", "rodrigo.f.ss@uol.com.br");
+INSERT INTO usuario(nome, email) VALUES ("Rodrigo Faria", "rodrigo.f.ss@uol.com.br");
+INSERT INTO usuario(nome, email) VALUES ("Alexandre Faria", "alexandre.f.ss@uol.com.br");
+INSERT INTO usuario(nome, email) VALUES ("Gabriela Faria", "gabriela.f.ss@uol.com.br");
+INSERT INTO usuario(nome, email) VALUES ("Marina Faria", "marina.f.ss@uol.com.br");
+
 INSERT INTO token(idusuario, token, datatoken) VALUES (1, '1)alskd', NOW());
+
+INSERT INTO tipocerveja(NomeTipo) VALUES ("Pilsen");
+INSERT INTO tipocerveja(NomeTipo) VALUES ("Lager");
+INSERT INTO tipocerveja(NomeTipo) VALUES ("Weissbier");
+INSERT INTO tipocerveja(NomeTipo) VALUES ("Ale");
+
+INSERT INTO amizade(idusuario, idamigo) VALUES(1, 30);
+INSERT INTO amizade(idusuario, idamigo) VALUES(32, 30);
+
+INSERT INTO cerveja(nome, idtipo) VALUES("Brahma Extra", 2);
+INSERT INTO cerveja(nome, idtipo) VALUES("Skol", 1);
+INSERT INTO cerveja(nome, idtipo) VALUES("Franziskaner Hefe", 3);
+INSERT INTO cerveja(nome, idtipo) VALUES("Colorado Indica", 4);
+
+
