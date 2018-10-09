@@ -3,7 +3,7 @@ CREATE TABLE usuario (
 	NOME VARCHAR(25) NOT NULL,
 	EMAIL VARCHAR(25) NOT NULL,
 	-- IMAGEM VARCHAR(50),
-	PRIMARY KEY (ID)
+	PRIMARY KEY (EMIAL)
 
 );
 
@@ -129,8 +129,8 @@ INSERT INTO tipocerveja(NomeTipo) VALUES ("Lager");
 INSERT INTO tipocerveja(NomeTipo) VALUES ("Weissbier");
 INSERT INTO tipocerveja(NomeTipo) VALUES ("Ale");
 
-INSERT INTO amizade(idusuario, idamigo) VALUES(1, 30);
-INSERT INTO amizade(idusuario, idamigo) VALUES(32, 30);
+INSERT INTO amizade(idusuario, idamigo) VALUES(1, 2);
+INSERT INTO amizade(idusuario, idamigo) VALUES(2, 3);
 
 INSERT INTO cerveja(nome, idtipo) VALUES("Brahma Extra", 2);
 INSERT INTO cerveja(nome, idtipo) VALUES("Skol", 1);

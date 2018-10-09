@@ -17,6 +17,16 @@ class Usuario{
 
     function sing_up($nome, $email){
         if($nome && $email){
+            $query = "SELECT ID FROM " . $this->table_name . " WHERE email ='" . $email . "'";
+            // prepare query statement
+            $stmt = $this->conn->prepare($query);
+            // execute query
+            $stmt->execute();
+            $teste = $stmt->fetch(PDO::FETCH_ASSOC)["ID"];
+            if($teste){
+                return false;
+            }
+
             $query = "INSERT INTO " . $this->table_name . "(nome, email) VALUES ('" . $nome ."','". $email .  "')";
             // prepare query statement
             $stmt = $this->conn->prepare($query);
@@ -29,14 +39,14 @@ class Usuario{
             $stmt = $this->conn->prepare($query);
             // execute query
             $stmt->execute();
-            $id = $stmt->fetch(PDO::FETCH_ASSOC)["ID"];
+            $id[0] = $stmt->fetch(PDO::FETCH_ASSOC)["ID"];
 
             if($id){
                 include_once 'auth.php';
                 $auth = new Auth($this->conn);
-                $auth->create_token($id);
+                $id[1] = $auth->create_token($id[0]);
 
-                return $id;
+                return $id; 
             }
             else return false;
              
@@ -46,7 +56,7 @@ class Usuario{
     
     function read_all(){
         // select all query
-        $query = "SELECT * FROM " . $this->table_name;
+        $query = "SELECT ID, NOME FROM " . $this->table_name;
      
         // prepare query statement
         $stmt = $this->conn->prepare($query);
@@ -67,6 +77,25 @@ class Usuario{
         $stmt->execute();
      
         return $stmt;
+    }
+
+    function friendship($id, $id_amigo){
+        $query = "INSERT INTO amizade(IDUsuario, IDAmigo) VALUES(". $id .",". $id_amigo .")";
+     
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+     
+        // execute query
+        $stmt->execute();
+
+        $query = "SELECT * FROM amizade WHERE IDUsuario = ". $id ." AND IDAmigo = ". $id_amigo;
+     
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+     
+        // execute query
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
 

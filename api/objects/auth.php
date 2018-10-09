@@ -38,6 +38,8 @@ class Auth{
         $stmt = $this->conn->prepare($query);
         // execute query
         $stmt->execute();
+        
+        return $token;
     }
     
     function val_token($token, $id){

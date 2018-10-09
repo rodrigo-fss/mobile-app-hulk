@@ -36,7 +36,6 @@ if($num>0){
         $user=array(
             "id" => $ID,
             "nome" => $NOME,
-            "email" => $EMAIL,
         );
  
         array_push($users_arr["usuarios"], $user);

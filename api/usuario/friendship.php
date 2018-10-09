@@ -20,19 +20,17 @@ $db = $database->getConnection();
 // initialize object
 $usuario = new Usuario($db);
 
-$cadastro = $usuario->sing_up(urldecode($params["name"]), urldecode($params['email']));
+$amizade = $usuario->friendship(urldecode($params["id"]), urldecode($params['id_amigo']));
  //verificando token
-if($cadastro){
+if($amizade){
     $msg = array(
-        "message" => "Usuario cadastrado com sucesso.",
-        "ID" => $cadastro[0],
-        "token" => $cadastro[1],
+        "message" => "Amizade cadastrada com sucesso.",
     );
     echo json_encode($msg);
 } 
 else{
     echo json_encode(
-        array("message" => "Erro ao criar usuario. Tem certeza de que já não é cadastrado?")
+        array("message" => "Erro ao criar amizade")
     );
 
 }
