@@ -22,7 +22,6 @@ $num = $stmt->rowCount();
 if($num>0){
  
     // products array
-    $users_arr=array();
     $users_arr["usuarios"]=array();
  
     // retrieve our table contents

@@ -74,5 +74,20 @@ O token é sempre composto de ID + ) + random string
 
 **Exemplo**: *https://www.formore.com.br/mobile/api/feed/new_pub.php?token=1)a&nome_cerveja=Colorado%20Indica&local=adwd&avaliacao=5&amigo1=1&amigo2=2*
 
+---
+
+## Ler Feed ##
+*/api/feed/read_feed.php*  
+
+**Input Params**: token(string)
+
+**Retorno**:
+* Sucesso -> idPublicacao(int), Autor(int) *ID do autor*, NomeCerveja(varchar), Localizacao(varchar), Image (varchar), Avaliacao(int), Data(DateTime)
+* Erro -> Mensagem de Erro
+
+**Exemplo**: *https://www.formore.com.br/mobile/api/feed/read_feed.php?token=1)alskd*
+
+
+
 
 

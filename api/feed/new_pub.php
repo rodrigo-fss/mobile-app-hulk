@@ -5,7 +5,6 @@ header("Content-Type: application/json; charset=UTF-8");
  
 // include database and object files
 include_once '../config/database.php';
-include_once '../objects/usuario.php';
 include_once '../objects/feed.php';
 
 //get current url
@@ -25,7 +24,6 @@ $database = new Database();
 $db = $database->getConnection();
  
 // initialize object
-$usuario = new Usuario($db);
 $feed = new Feed($db);
  
  //verificando token
