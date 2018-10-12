@@ -19,7 +19,7 @@ $db = $database->getConnection();
 // initialize object
 $usuario = new Usuario($db);
 
-$cadastro = $usuario->sing_up(urldecode($params["nome"]), urldecode($params['email']));
+$cadastro = $usuario->sing_up(urldecode($params["nome"]), urldecode($params['email']), urldecode($params['cidade']), urldecode($params['estado']), urldecode($params['pais']));
  //verificando token
 if($cadastro){
     $msg = array(

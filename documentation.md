@@ -12,7 +12,7 @@ toda a api foi desenvolvida em php, seus parametros de entrada são parametros u
 * Sucesso -> IdNovoUsuario(int) e TokenNovoUsuario(string) 
 * Erro -> Mensagem de Erro
  
-**Exemplo**: *https://www.formore.com.br/mobile/api/usuario/sing_up.php?nome=teste%20testando&email=teste%40email.com*
+**Exemplo**: *https://www.formore.com.br/mobile/api/usuario/sing_up.php?nome=teste%20testando&email=teste%40email.com&cidade=curitiba&estado=parana&pais=brasil*
 
 ---
 

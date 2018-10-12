@@ -15,7 +15,7 @@ class Usuario{
         $this->conn = $db;
     }
 
-    function sing_up($nome, $email){
+    function sing_up($nome, $email, $cidade, $estado, $pais){
         if($nome && $email){
             $query = "SELECT ID FROM " . $this->table_name . " WHERE email ='" . $email . "'";
             // prepare query statement
@@ -27,7 +27,7 @@ class Usuario{
                 return false;
             }
 
-            $query = "INSERT INTO " . $this->table_name . "(nome, email) VALUES ('" . $nome ."','". $email .  "')";
+            $query = "INSERT INTO " . $this->table_name . "(nome, email, cidade, estado, pais) VALUES ('" . $nome ."','". $email .  "','". $cidade .  "','". $estado .  "','". $pais .  "')";
             // prepare query statement
             $stmt = $this->conn->prepare($query);
             // execute query
