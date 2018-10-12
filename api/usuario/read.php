@@ -28,7 +28,6 @@ $auth = new Auth($db);
 $val_token = $auth->val_token($token, $id);
 
 if($val_token){
-
     // query products
     $stmt = $usuario->read($id);
     $num = $stmt->rowCount();
@@ -48,6 +47,9 @@ if($val_token){
                 "id" => $ID,
                 "nome" => $NOME,
                 "email" => $EMAIL,
+                "cidade" => $CIDADE,
+                "estado" => $ESTADO,
+                "pais" => $PAIS,
             );
         }
      

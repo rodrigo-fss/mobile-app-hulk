@@ -10,9 +10,10 @@ class Feed{
         $this->conn = $db;
     }
 
-    function new_pub($id, $nomeCerveja, $local, $avaliacao, $amigos){
+    function new_pub($id, $nomeCerveja, $latitude, $longitude, $descricao, $tipo, $avaliacao, $amigos){
         $date = date("Y-m-d H:i:s");
-        $query = "INSERT INTO " . $this->table_name . "(IdUsuario, NomeCerveja, Localizacao, Avaliacao, Data) VALUES (" . $id .", '". $nomeCerveja . "', '" . $local . "'," . $avaliacao .", '" . $date . "')";
+        $query = "INSERT INTO " . $this->table_name . "(IdUsuario, NomeCerveja, Longitude, Latitude, Data, Avaliacao, Descricao, Tipo) VALUES (" . $id .", '". $nomeCerveja . "', '" . $longitude . "', '" . $latitude ."', '" . $date ."', " . $avaliacao .", '" . $descricao ."', " . $tipo . ")";
+        var_dump($query);
         // prepare query statement
         $stmt = $this->conn->prepare($query);
         // execute query
@@ -76,12 +77,16 @@ class Feed{
                   "IDPublicacao" => $IDPublicacao,
                   "Autor" =>        $IDUsuario,
                   "NomeCerveja" =>  $NomeCerveja,
-                  "Localizacao" =>  $Localizacao,
+                  "Latitude" =>     $Latitude,
+                  "Longitude" =>    $Longitude,
                   "Imagem" =>       $Imagem,
                   "Avaliacao" =>    $Avaliacao,
                   "Data" =>         $Data,
+                  "Descricao" =>    $Descricao,
+                  "Tipo" =>         $Tipo,
 
                 );
+                var_dump($publicacao);
                 array_push($publicacoes, $publicacao);
             }
         }

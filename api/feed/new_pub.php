@@ -15,8 +15,11 @@ parse_str($url_params['query'], $param);
 $token = $param['token'];
 $id = explode(")", $token)[0];
 $nomeCerveja = $param['nome_cerveja'];
-$local = $param['local'];
+$latitude = $param['latitude'];
+$longitude = $param['longitude'];
 $avaliacao = $param['avaliacao'];
+$descricao = $param['descricao'];
+$tipo = $param['tipo'];
 $amigos = array($param['amigo1'], $param['amigo2'], $param['amigo3'], $param['amigo4'], $param['amigo5']);
 
 // instantiate database and product object
@@ -27,7 +30,7 @@ $db = $database->getConnection();
 $feed = new Feed($db);
  
  //verificando token
-$publicacao = $feed->new_pub($id, $nomeCerveja, $local, $avaliacao, $amigos);
+$publicacao = $feed->new_pub($id, $nomeCerveja, $latitude, $longitude, $descricao, $tipo, $avaliacao, $amigos);
 
 if($publicacao){
     echo json_encode(

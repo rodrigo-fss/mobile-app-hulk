@@ -56,7 +56,7 @@ class Usuario{
     
     function read_all(){
         // select all query
-        $query = "SELECT ID, NOME FROM " . $this->table_name;
+        $query = "SELECT ID, NOME, CIDADE, ESTADO, PAIS FROM " . $this->table_name;
      
         // prepare query statement
         $stmt = $this->conn->prepare($query);
@@ -96,6 +96,26 @@ class Usuario{
         // execute query
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    function sing_in($email){
+        $query = "SELECT ID FROM " . $this->table_name . " WHERE email ='" . $email . "'";
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+        // execute query
+        $stmt->execute();
+        $ID = $stmt->fetch(PDO::FETCH_ASSOC)["ID"];
+        if($ID){
+            $query = "SELECT Token FROM token WHERE IDUsuario = " . $ID . "";
+            // prepare query statement
+            $stmt = $this->conn->prepare($query);
+            // execute query
+            $stmt->execute();
+            $token = $stmt->fetch(PDO::FETCH_ASSOC)["Token"];
+
+            return $token;
+        }
+        return false;
     }
 
 

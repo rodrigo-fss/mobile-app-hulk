@@ -35,6 +35,9 @@ if($num>0){
         $user=array(
             "id" => $ID,
             "nome" => $NOME,
+            "cidade" => $CIDADE,
+            "estado" => $ESTADO,
+            "pais" => $PAIS,
         );
  
         array_push($users_arr["usuarios"], $user);
